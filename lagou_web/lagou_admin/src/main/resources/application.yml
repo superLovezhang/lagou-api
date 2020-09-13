@@ -1,0 +1,24 @@
+server:
+  port: 6553
+spring:
+  application:
+    name: lagou-admin
+  datasource:
+    url: jdbc:mysql:///lagou?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=GMT%2B8
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+    default-property-inclusion: non_null # 如果用了@EnableWebMvc注解(或者继承了WebMvcConfigurationSupport) 这个配置将失效 只能在实体类上配置
+mybatis-plus:
+  mapper-locations: classpath:/mapper/xml/*Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      logic-delete-field: is_deleted
+      logic-not-delete-value: 0
+      logic-delete-value: 1
